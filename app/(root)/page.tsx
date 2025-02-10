@@ -4,6 +4,7 @@ import NavigationList from "@/components/ListItem/Navigation/NavigationList";
 import {Github, Instagram, Linkedin} from "lucide-react";
 import TechStackList from "@/components/ListItem/TechStack/TechStackList";
 import WorkExperienceList from "@/components/ListItem/Work/WorkExperienceList";
+import Link from "next/link";
 
 export default function Home() {
     const navigationList = [
@@ -18,6 +19,10 @@ export default function Home() {
         {
             label: "Projects",
             url: "#projects"
+        },
+        {
+            label: "Certification",
+            url: "#certification"
         }
 
     ]
@@ -41,9 +46,15 @@ export default function Home() {
 
                     <section id={"social-media"}>
                         <div className="flex gap-4">
-                            <Github color={"#f5f5f5"} size={32}/>
-                            <Linkedin color={"#f5f5f5"} size={32}/>
-                            <Instagram color={"#f5f5f5"} size={32}/>
+                            <Link href="https://github.com/jonalphabert">
+                                <Github color={"#f5f5f5"} size={32}/>
+                            </Link>
+                            <Link href="https://www.linkedin.com/in/jonathan-alphabert-b58300192/">
+                                <Linkedin color={"#f5f5f5"} size={32}/>
+                            </Link>
+                            <Link href={"https://www.instagram.com/john.forjc/"}>
+                                <Instagram color={"#f5f5f5"} size={32}/>
+                            </Link>
                         </div>
                     </section>
 

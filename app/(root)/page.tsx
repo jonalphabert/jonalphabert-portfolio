@@ -5,6 +5,10 @@ import {Github, Instagram, Linkedin} from "lucide-react";
 import TechStackList from "@/components/ListItem/TechStack/TechStackList";
 import WorkExperienceList from "@/components/ListItem/Work/WorkExperienceList";
 import Link from "next/link";
+import {TechStackKey} from "@/data/tech-stack";
+import ProjectsList from "@/components/Projects/ProjectList";
+import projects from "@/data/projects";
+import CertificationList from "@/components/Certification/CertificationList";
 
 export default function Home() {
     const navigationList = [
@@ -24,8 +28,17 @@ export default function Home() {
             label: "Certification",
             url: "#certification"
         }
-
     ]
+
+    const techStackGeneral:TechStackKey[] = [
+        'nextjs',
+        'nuxtjs',
+        "tailwindcss",
+        "graphql",
+        "rest"
+    ];
+
+    const projectListFeatured = projects.filter(item => item.isFeatured === true);
   return (
     <>
         <div className="fixed top-0 left-0 w-full h-screen flex justify-center items-center z-0">
@@ -47,13 +60,13 @@ export default function Home() {
                     <section id={"social-media"}>
                         <div className="flex gap-4">
                             <Link href="https://github.com/jonalphabert">
-                                <Github color={"#f5f5f5"} size={32}/>
+                                <Github color={"#f5f5f5"} size={32} aria-describedby={"Github"}/>
                             </Link>
                             <Link href="https://www.linkedin.com/in/jonathan-alphabert-b58300192/">
-                                <Linkedin color={"#f5f5f5"} size={32}/>
+                                <Linkedin color={"#f5f5f5"} size={32} aria-describedby={"LinkedIn"}/>
                             </Link>
                             <Link href={"https://www.instagram.com/john.forjc/"}>
-                                <Instagram color={"#f5f5f5"} size={32}/>
+                                <Instagram color={"#f5f5f5"} size={32} aria-describedby={"Instagram"}/>
                             </Link>
                         </div>
                     </section>
@@ -75,26 +88,19 @@ export default function Home() {
                     <p className={"text-xl mb-4 tracking-wide"}>In my spare time, you can find me exploring the latest
                         tech trends or enjoying a good cup of coffee while brainstorming new ideas. I’m driven by a
                         passion for continuous learning and a desire to create meaningful digital experiences.</p>
-                    <TechStackList/>
+                    <TechStackList techStackList={techStackGeneral} size={48} priority={true}/>
                 </section>
                 <section id={"work"}>
                     <h2 className={"text-4xl font-bold mb-8"}>Work</h2>
-                    <WorkExperienceList />
+                    <WorkExperienceList/>
                 </section>
                 <section id={"projects"}>
                     <h2 className={"text-4xl font-bold mb-8"}>Projects</h2>
-                    <p className={"text-xl mb-4 tracking-wide"}>A passionate and detail-oriented web developer with over
-                        2 years of experience in creating efficient, scalable, and user-friendly websites.</p>
-                    <p className={"text-xl mb-4 tracking-wide"}>I am Frontend Developer on <b>ezSign</b>, I crafting
-                        good user experience for the user. While developing this application, I maintain and refactor
-                        code to achieve clean code.</p>
-                    <p className={"text-xl mb-4 tracking-wide"}>With a strong focus on <b>performance optimization</b>,
-                        I ensure that every website I develop not only looks great but also runs smoothly and
-                        efficiently.</p>
-                    <p className={"text-xl mb-4 tracking-wide"}>In my spare time, you can find me exploring the latest
-                        tech trends or enjoying a good cup of coffee while brainstorming new ideas. I’m driven by a
-                        passion for continuous learning and a desire to create meaningful digital experiences.</p>
-                    <TechStackList/>
+                    <ProjectsList projectsListItem={projectListFeatured}/>
+                </section>
+                <section id={"certification"}>
+                    <h2 className={"text-4xl font-bold mb-8"}>Certification</h2>
+                    <CertificationList/>
                 </section>
             </main>
         </div>

@@ -1,4 +1,6 @@
-export const workExperiences = [
+import {workExperience} from "@/type/type";
+
+export const workExperiences:workExperience[] = [
     {
         companyName: 'ezSign - Digital Signing Platform',
         workYear: "2024 - Present",
@@ -8,7 +10,7 @@ export const workExperiences = [
             "Improve the SEO of the company profile website for improve brand awareness using tools like lightweight."
         ],
         technologies: [
-            "nuxt",
+            "nuxtjs",
             "bootstrap",
             "rest"
         ]

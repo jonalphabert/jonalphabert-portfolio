@@ -1,8 +1,6 @@
-import Nuxt from "@/components/TechStackItem/Nuxt";
-import Bootstrap from "@/components/TechStackItem/Bootstrap";
-import REST from "@/components/TechStackItem/REST";
 import WorkResponsibilty from "@/components/ListItem/Work/WorkResponsibilty";
 import {workExperience} from "@/type/type";
+import TechStackList from "@/components/ListItem/TechStack/TechStackList";
 
 export default function WorkExperienceItem({workExperience}: {workExperience: workExperience}) {
     return (
@@ -11,9 +9,7 @@ export default function WorkExperienceItem({workExperience}: {workExperience: wo
             <p className={"text-base mb-4 italic"}>{workExperience.workYear}</p>
             <WorkResponsibilty workResponsibility={workExperience.responsibilities} />
             <div className="flex gap-4 w-full">
-                <Nuxt/>
-                <Bootstrap/>
-                <REST/>
+                <TechStackList techStackList={workExperience.technologies} size={32} priority={true}/>
             </div>
         </div>
     )

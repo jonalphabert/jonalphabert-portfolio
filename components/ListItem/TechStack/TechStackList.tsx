@@ -1,19 +1,22 @@
-import Next from "@/components/TechStackItem/Next";
-import Nuxt from "@/components/TechStackItem/Nuxt";
-import Tailwind from "@/components/TechStackItem/Tailwind";
-import REST from "@/components/TechStackItem/REST";
-import GraphQL from "@/components/TechStackItem/GraphQL";
+import Image from "next/image";
 
-export default function TechStackList() {
+import techStack, { TechStackKey } from "@/data/tech-stack";
+import Tooltips from "@/components/Utils/Tooltips";
+
+type TechStackListProps = {
+    techStackList: TechStackKey[];
+    size?: number,
+    priority?: boolean,
+}
+
+export default function TechStackList({ techStackList, size = 48, priority = false }: TechStackListProps) {
     return (
-        <>
-            <div className={"flex gap-4"}>
-                <Next />
-                <Nuxt />
-                <Tailwind />
-                <REST />
-                <GraphQL />
-            </div>
-        </>
-    )
+        <div className={"flex gap-4"}>
+            {techStackList.map((item, key) => (
+                <Tooltips text={techStack[item].title} key={key}>
+                    <Image src={techStack[item].imgUrl} width={size} height={size} alt={techStack[item].title} className={"select-none"} priority={priority}/>
+                </Tooltips>
+            ))}
+        </div>
+    );
 }

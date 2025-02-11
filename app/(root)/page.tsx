@@ -9,6 +9,7 @@ import {TechStackKey} from "@/data/tech-stack";
 import ProjectsList from "@/components/Projects/ProjectList";
 import projects from "@/data/projects";
 import CertificationList from "@/components/Certification/CertificationList";
+import Tooltips from "@/components/Utils/Tooltips";
 
 export default function Home() {
     const navigationList = [
@@ -42,7 +43,7 @@ export default function Home() {
   return (
     <>
         <div className="fixed top-0 left-0 w-full h-screen flex justify-center items-center z-0">
-            <Image src={darkBackground} alt={"background"} fill quality="100" priority={true} className={"select-none"}/>
+            <Image src={darkBackground} alt={"background"} fill quality="100" priority={true} className={"select-none object-cover"}/>
         </div>
         <div className="relative container mx-auto z-10 grid grid-cols-3 gap-x-12  h-full">
             <div className="relative top-0 left-0 h-full">
@@ -60,13 +61,19 @@ export default function Home() {
                     <section id={"social-media"}>
                         <div className="flex gap-4">
                             <Link href="https://github.com/jonalphabert">
-                                <Github color={"#f5f5f5"} size={32} aria-describedby={"Github"}/>
+                                <Tooltips text={"GitHub"}>
+                                    <Github color={"#f5f5f5"} size={32} aria-describedby={"Github"}/>
+                                </Tooltips>
                             </Link>
                             <Link href="https://www.linkedin.com/in/jonathan-alphabert-b58300192/">
-                                <Linkedin color={"#f5f5f5"} size={32} aria-describedby={"LinkedIn"}/>
+                                <Tooltips text={"LinkedInd"}>
+                                    <Linkedin color={"#f5f5f5"} size={32} aria-describedby={"LinkedIn"}/>
+                                </Tooltips>
                             </Link>
                             <Link href={"https://www.instagram.com/john.forjc/"}>
-                                <Instagram color={"#f5f5f5"} size={32} aria-describedby={"Instagram"}/>
+                                <Tooltips text={"Instagram"}>
+                                    <Instagram color={"#f5f5f5"} size={32} aria-describedby={"Instagram"}/>
+                                </Tooltips>
                             </Link>
                         </div>
                     </section>

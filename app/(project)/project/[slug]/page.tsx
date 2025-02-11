@@ -2,6 +2,7 @@ import PROJECT from '@/data/projects'
 import Image from "next/image";
 import {notFound} from "next/navigation";
 import {projectType} from "@/type/type";
+import TechStackList from "@/components/ListItem/TechStack/TechStackList";
 
 export default async function ProjectDetailPage({ params }:{params: any}) {
     const { slug } = await params;
@@ -19,7 +20,10 @@ export default async function ProjectDetailPage({ params }:{params: any}) {
                     <Image src={projectDetail.projectImgCover} alt={projectDetail.projectName} width={1080} height={384}
                            className={"w-full h-96 object-cover mb-4"} quality="100" priority={true}/>
                     <h1 className={"text-4xl font-bold mb-4"}>{projectDetail.projectName}</h1>
-                    <p className={"text-lg mb-8"}>{projectDetail.projectDescription}</p>
+                    <p className={"text-lg mb-4"}>{projectDetail.projectDescription}</p>
+                    <div className={"mb-8"}>
+                        <TechStackList techStackList={projectDetail.technologies} size={48} priority={true}/>
+                    </div>
 
                     <section id={"project-goals"} className={"mb-16"}>
                         <h2 className={"text-3xl font-bold mb-4"}>The Problems</h2>

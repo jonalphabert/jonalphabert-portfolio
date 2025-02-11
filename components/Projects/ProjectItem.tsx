@@ -7,7 +7,7 @@ export default function ProjectItem({project}: {project: projectType}) {
     return (
         <>
             <div className={"border border-gray-50 rounded-2xl overflow-hidden"}>
-                <Image src={project.projectImgCover} alt={"Digital Invitation Service - Project Jonathan Alphabert"} width={640} height={360} loading="lazy" quality="90" />
+                <Image src={project.projectImgCover} alt={"Digital Invitation Service - Project Jonathan Alphabert"} width={640} height={360} loading="lazy" quality="90" className={"object-cover"}/>
                 <section id={"project-detail"} className={"p-4"}>
                     <h3 className={"font-semibold text-2xl mb-2"}>{project.projectName}</h3>
                     <p className={"text-lg mb-4"}>{project.projectDescription}</p>

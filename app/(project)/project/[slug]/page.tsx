@@ -3,6 +3,8 @@ import Image from "next/image";
 import {notFound} from "next/navigation";
 import {projectType} from "@/type/type";
 import TechStackList from "@/components/ListItem/TechStack/TechStackList";
+import {RotateScaleUpEntraceComponent} from "@/components/Animation/RotateScaleUpEntrace";
+import {SlideFromTopComponent} from "@/components/Animation/SlideFromTop";
 
 export default async function ProjectDetailPage({ params }:{params: any}) {
     const { slug } = await params;
@@ -17,28 +19,42 @@ export default async function ProjectDetailPage({ params }:{params: any}) {
         <>
             <main className={"container mx-auto px-4 py-16"}>
                 <div className={"max-w-[1080px] md:w-3/4 mx-auto"}>
-                    <Image src={projectDetail.projectImgCover} alt={projectDetail.projectName} width={1080} height={384}
-                           className={"w-full h-96 object-cover mb-4"} quality="100" priority={true}/>
-                    <h1 className={"text-4xl font-bold mb-4"}>{projectDetail.projectName}</h1>
-                    <p className={"text-lg mb-4"}>{projectDetail.projectDescription}</p>
+                    <div className={"mb-4 overflow-hidden aspect-video relative w-full"}>
+                        <RotateScaleUpEntraceComponent>
+                            <Image src={projectDetail.projectImgCover} alt={projectDetail.projectName} width={1080} height={560}
+                                   className={"w-full h-full object-cover object-center z-10"} quality="100" priority={true}/>
+                        </RotateScaleUpEntraceComponent>
+                    </div>
+                    <SlideFromTopComponent>
+                        <h1 className={"text-4xl font-bold mb-4"}>{projectDetail.projectName}</h1>
+                    </SlideFromTopComponent>
+                    <SlideFromTopComponent>
+                        <p className={"text-lg mb-4"}>{projectDetail.projectDescription}</p>
+                    </SlideFromTopComponent>
+
                     <div className={"mb-8"}>
                         <TechStackList techStackList={projectDetail.technologies} size={48} priority={true}/>
                     </div>
 
                     <section id={"project-goals"} className={"mb-16"}>
-                        <h2 className={"text-3xl font-bold mb-4"}>The Problems</h2>
+                        <SlideFromTopComponent>
+                            <h2 className={"text-3xl font-bold mb-4"}>The Problems</h2>
+                        </SlideFromTopComponent>
                         <ol className={"ml-8"}>
                             {projectDetail.projectProblems.map((goal, idx) => (
-
-                                <li key={idx} className={"list-decimal text-2xl font-semibold"}>{goal.titleProblem}
-                                    <p className={"text-lg mb-8 mt-4 font-medium"}>{goal.descriptionProblem}</p>
-                                </li>
+                                <SlideFromTopComponent key={idx}>
+                                    <li className={"list-decimal text-2xl font-semibold"}>{goal.titleProblem}
+                                        <p className={"text-lg mb-8 mt-4 font-medium"}>{goal.descriptionProblem}</p>
+                                    </li>
+                                </SlideFromTopComponent>
                             ))}
                         </ol>
                     </section>
 
                     <section id={"project-goals"} className={"mb-16"}>
-                        <h2 className={"text-3xl font-bold mb-4"}>Project's Goal</h2>
+                        <SlideFromTopComponent>
+                            <h2 className={"text-3xl font-bold mb-4"}>Project's Goal</h2>
+                        </SlideFromTopComponent>
                         <ol className={"ml-8"}>
                             {projectDetail.projectGoals.map((goal, idx) => (
 

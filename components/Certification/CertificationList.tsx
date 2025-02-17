@@ -28,7 +28,7 @@ export default function CertificationList() {
             <div className={"grid grid-cols-1 gap-8"}>
                 {certificationList.map((item, idx) => (
                     <SlideFromTopComponent key={idx}>
-                        <div className={"border rounded-lg border-gray-200 p-8 flex gap-4"}>
+                        <div className={"border rounded-lg border-gray-200 p-8 flex gap-4 flex-col md:flex-row"}>
                             <div>
                                 <Image src={item.imgCreator} alt={item.title} width={80} height={80} />
                             </div>

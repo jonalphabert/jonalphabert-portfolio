@@ -5,6 +5,7 @@ import { projectType } from "@/type/type";
 import TechStackList from "@/components/ListItem/TechStack/TechStackList";
 import { RotateScaleUpEntraceComponent } from "@/components/Animation/RotateScaleUpEntrace";
 import { SlideFromTopComponent } from "@/components/Animation/SlideFromTop";
+import Navbar from "@/components/Navbar/NavbarProject";
 
 export default async function ProjectDetailPage({ params }: { params: any }) {
   const { slug } = await params;
@@ -17,7 +18,10 @@ export default async function ProjectDetailPage({ params }: { params: any }) {
 
   return (
     <>
-      <main className={"container mx-auto px-4 py-16"}>
+      <div className={"overflow-hidden"}>
+        <Navbar />
+      </div>
+      <main className={"container mx-auto px-4 py-16 overflow-hidden"}>
         <div className={"max-w-[1080px] md:w-3/4 mx-auto"}>
           <div className={"mb-4 overflow-hidden aspect-video relative w-full"}>
             <RotateScaleUpEntraceComponent>

@@ -12,6 +12,7 @@ import CertificationList from "@/components/Certification/CertificationList";
 import Tooltips from "@/components/Utils/Tooltips";
 import { SlideFromLeftComponet } from "@/components/Animation/SlideFromLeft";
 import {SlideFromTopComponent} from "@/components/Animation/SlideFromTop";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   const navigationList = [
@@ -41,9 +42,10 @@ export default function Home() {
         <div className="fixed top-0 left-0 w-full h-screen flex justify-center items-center z-0">
           <Image src={darkBackground} alt={"background"} fill quality="100" priority={true} className={"select-none object-cover"} />
         </div>
-        <div className="relative container mx-auto z-10 grid grid-cols-3 gap-x-12  h-full">
+        <div className="relative container mx-auto z-10 grid grid-cols-1 md:grid-cols-3 md:gap-x-12 h-full">
+          <Navbar />
           <div className="relative top-0 left-0 h-full">
-            <div className="flex flex-col gap-12 h-screen py-24 px-4 justify-between sticky top-0 z-10">
+            <div className="md:flex flex-col gap-12 h-screen py-24 px-4 justify-between sticky top-0 z-10 hidden">
               <section id={"introduction"}>
                 <SlideFromLeftComponet>
                   <p className={"text-2xl text-white mb-2"}>Hi, I'm</p>
@@ -90,7 +92,7 @@ export default function Home() {
             </div>
           </div>
 
-          <main className="grid grid-cols-1 gap-12 py-24 px-4 justify-between col-span-2 h-max">
+          <main className="grid grid-cols-1 gap-12 md:py-24 py-6 px-4 justify-between col-span-2 h-max">
             <section id={"about"}>
               <SlideFromTopComponent>
                 <h2 className={"text-4xl font-bold mb-8"}>About</h2>

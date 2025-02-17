@@ -5,7 +5,29 @@ import { projectType } from "@/type/type";
 import TechStackList from "@/components/ListItem/TechStack/TechStackList";
 import { RotateScaleUpEntraceComponent } from "@/components/Animation/RotateScaleUpEntrace";
 import { SlideFromTopComponent } from "@/components/Animation/SlideFromTop";
-import Navbar from "@/components/Navbar/NavbarProject";
+import {Metadata, ResolvingMetadata} from "next";
+
+export async function generateMetadata(
+    { params }: {params: any}
+): Promise<Metadata> {
+  const { slug } = await params;
+
+  const projectDetail: projectType | undefined = PROJECT.find((item) => item.projectSlug === slug);
+
+  if (!projectDetail) {
+    return {
+      title: "Page Not Found",
+      description: "Page Not Found",
+    }
+  }
+
+  return {
+    title: projectDetail.projectName,
+    openGraph: {
+      images: [projectDetail.projectImgCover],
+    },
+  }
+}
 
 export default async function ProjectDetailPage({ params }: { params: any }) {
   const { slug } = await params;
@@ -18,11 +40,8 @@ export default async function ProjectDetailPage({ params }: { params: any }) {
 
   return (
     <>
-      <div className={"overflow-hidden"}>
-        <Navbar />
-      </div>
-      <main className={"container mx-auto px-4 py-16 overflow-hidden"}>
-        <div className={"max-w-[1080px] md:w-3/4 mx-auto"}>
+
+        <div className={"max-w-[1080px] mx-auto"}>
           <div className={"mb-4 overflow-hidden aspect-video relative w-full"}>
             <RotateScaleUpEntraceComponent>
               <Image src={projectDetail.projectImgCover} alt={projectDetail.projectName} width={1080} height={560} className={"w-full h-full object-cover object-center z-10"} quality="100" priority={true} />
@@ -103,7 +122,6 @@ export default async function ProjectDetailPage({ params }: { params: any }) {
             </ol>
           </section>
         </div>
-      </main>
     </>
   );
 }

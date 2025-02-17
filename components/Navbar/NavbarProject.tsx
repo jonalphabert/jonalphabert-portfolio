@@ -10,20 +10,8 @@ import Link from "next/link";
 export default function Navbar() {
     const navigationList = [
         {
-            label: "About",
-            url: "#about",
-        },
-        {
-            label: "Work Experience",
-            url: "#work",
-        },
-        {
-            label: "Projects",
-            url: "#projects",
-        },
-        {
-            label: "Certification",
-            url: "#certification",
+            label: "Home",
+            url: "/",
         },
     ];
     const [openMenu, setOpenMenu] = useState(false)
